@@ -1,0 +1,49 @@
+{{ partial "head.html" . }}
+{{ $baseurl := .Site.BaseURL }}
+<body>
+<div id="topbar">
+<div class="wrapper">
+	<header>
+		<nav class="navbar">
+			<ul>
+				<li><a href="{{ $baseurl }}"><b>ISE</b></a></li>
+				<li><a href="{{ $baseurl }}/talks">All Talks</a></li>
+				<li><a href="{{ $baseurl }}/upcoming">Up Coming talks</a></li>
+				<li><span><a href="{{ $baseurl }}/presentation">Presentations</a></span></li>
+			</ul>
+		</nav>
+	</header>
+</div>
+</div>
+
+<div class="wrapper">
+	
+<h2>Talks Archive</h2>
+<div class="units-row">
+<div class="unit-70">
+{{ range .Data.Pages.GroupByDate "2006" }}
+<div class="units-row">
+<div class="unit-10">
+<h3><a id="{{ .Key }}">{{ .Key }}</a></h3>
+</div>
+<div class="unit-90">
+<p>
+{{ range .Pages }}
+&para; {{if not (isset .Params "grlog") }}<time><em>{{ .Date.Format "January 2" }}</em></time>, {{ end }}<a href="{{ .Permalink }}">{{ .Title | safeHTML }}</a> 
+{{ end }}
+</p>
+
+</div>
+</div>
+{{ end }}
+</div>
+<div class="unit-30">
+<p>This page is an archive of the talk items, or &ldquo;blog entries&rdquo; from this site. </p>
+</div>
+</div>
+</div>
+
+</body>
+</html>
+
+

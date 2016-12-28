@@ -1,0 +1,38 @@
+{{ partial "headwithcard.html" . }}
+{{ $baseurl := .Site.BaseURL }}
+<body>
+<div id="topbar">
+<div class="wrapper">
+	<header>
+		<nav class="navbar">
+			<ul>
+				<li><a href="{{ $baseurl }}"><b>ISE</b></a></li>
+				<li><a href="{{ $baseurl }}/talks">All Talks</a></li>
+				<li><a href="{{ $baseurl }}/upcoming">Up Coming talks</a></li>
+				<li><span><a href="{{ $baseurl }}/presentation">Presentations</a></span></li>
+			</ul>
+		</nav>
+	</header>
+</div>
+</div>
+
+<div class="wrapper">
+<div class="units-row">		
+<div class="unit-20">&nbsp;</div>
+<div class="unit-60">
+<h2><a href="">{{ .Title }}</a></h2></div>
+</div>
+<div class="units-row">		
+<div class="unit-20 dateblock"><h4>{{ .Date.Format "January 2, 2006" }}</h4>
+{{ if (ge .Date.Unix .Now.Unix) }}{{ if (le .Date.Unix (add .Now.Unix 7776000)) }}<span class="badge badge-small badge-yellow">coming soon</span>{{ end }}{{ end }}
+</div>
+<div class="unit-60">{{ .Content }}</div>
+</div>
+</div>
+
+<hr class="separator">
+
+</body>
+</html>
+
+

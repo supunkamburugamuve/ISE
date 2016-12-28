@@ -1,0 +1,9 @@
+baseurl = "http://consequently.org"
+languageCode = "en-us"
+title = "ISE: Colloquium"
+RSSLink = "http://consequently.org/index.xml"
+
+[params]
+   description = "ISE"
+   author = "ISE"
+   

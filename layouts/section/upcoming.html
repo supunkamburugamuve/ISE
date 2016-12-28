@@ -1,0 +1,55 @@
+{{ partial "head.html" . }}
+{{ $baseurl := .Site.BaseURL }}
+<body>
+<div id="topbar">
+    <div class="wrapper">
+        <header>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="{{ $baseurl }}"><b>ISE</b></a></li>
+                    <li><a href="{{ $baseurl }}/talks">All Talks</a></li>
+                    <li><a href="{{ $baseurl }}/upcoming">Up Coming talks</a></li>
+                    <li><span><a href="{{ $baseurl }}/presentation">Presentations</a></span></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+</div>
+
+<div class="wrapper">
+
+    <h2>Upcoming Talks</h2>
+    <div class="units-row">
+        <div class="unit-70">
+            {{ range first 10 ((where .Data.Pages.ByDate "Section" "upcoming").Reverse) }}
+            <div class="units-row-end">
+                <div class="unit-33 dateblock">
+                    <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                    <h4>{{ .Date.Format "2 January 2006" }}</h4>
+                </div>
+                <div class="unit-66">
+                    {{ if .Truncated }}
+                    {{ .Summary }}
+                    <p class="text-right"><a href="{{ .RelPermalink }}">Read More…</a></p>
+                    {{ else }}
+                    {{ .Content }}
+                    {{ end }}
+                    <hr>
+                </div>
+            </div>
+
+            {{ end }}
+
+            <div class="units-row-end">
+                <div class="unit-33 dateblock">&nbsp;</div>
+                <div class="unit-66">
+                    <nav class="navbar navbar-right"><a href="talks">&rarr; all talks</a></nav>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
